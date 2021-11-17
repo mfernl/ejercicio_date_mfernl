@@ -135,4 +135,106 @@ public class Date {
 		else{return  "Invierno";}}
 		else{return "Introduzca un mes valido";}
 	}
+	public int monthsLeft(){
+		int mesesRestantes;
+		mesesRestantes = 12 - this.month;
+		return mesesRestantes;
+	}
+	public String daysLeft(){
+		int diasRestantes;
+		String fechasRestantes = "";
+		diasRestantes = getDaysOfMonth() - this.day;
+		for(int i=0;i<=diasRestantes;i++){
+			fechasRestantes = fechasRestantes + " "+(this.day+i)+"/"+this.month+"/"+this.year+" ";
+		}
+		return fechasRestantes;
+	}
+	public String sameNumberOfDays(){
+		String mesesIgualDuracion = "";
+		switch (this.month) {
+			case 1: 
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Marzo Mayo Julio Agosto Octubre Diciembre";
+				break;
+			case 3:
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Enero Mayo Julio Agosto Octubre Diciembre";
+				break;
+			case 5: 
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Enero Marzo Julio Agosto Octubre Diciembre";
+				break;
+			case 7: 
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Enero Marzo Mayo Agosto Octubre Diciembre";
+				break;
+			case 8: 
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Enero Marzo Mayo Julio Octubre Diciembre";
+				break;
+			case 10: 
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Enero Marzo Mayo Julio Agosto Diciembre";
+				break;
+			case 12:
+				mesesIgualDuracion = "Los meses que tienen los mismos dias son Enero Marzo Mayo Julio Agosto Octube";
+				break;
+			case 4:
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Junio Septiembre Noviembre ";
+			break;
+			case 6:
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Abril Septiembre Noviembre ";
+			break;
+			case 9:
+			mesesIgualDuracion = "Los meses que tienen los mismos dias son Abril Junio Noviembre ";
+			break;
+			case 11:
+				mesesIgualDuracion = "Los meses que tienen los mismos dias son Abril Junio Septiembre ";
+				break;
+			case 2:
+				mesesIgualDuracion = "Febrero es único";
+				break;			
+			}
+			return mesesIgualDuracion;
+	}
+	public int daysPassed(){
+		int numDays2 = 0;
+		int numDays = 0;
+		switch (this.month) {
+			case 1:
+			numDays = 31;
+			break; 
+			case 3:
+			numDays = 28+(2*31);
+			break; 
+			case 5:
+			numDays = 28+1*30+3*31;
+			break; 
+			case 7:
+			numDays = 28+2*30+4*31;
+			break; 
+			case 8:
+			numDays = 28+2*30+5*31;
+			break; 
+			case 10: 
+			numDays = 28+3*30+6*31;
+			break;
+			case 12:
+				numDays = 28+4*30+7*31;
+				break;
+			case 4:
+			numDays = 28+30+2*31;
+			break;
+			case 6:
+			numDays = 28+2*30+3*31;
+			break;
+			case 9:
+			numDays = 28+3*30+5*31;
+			break;
+			case 11:
+				numDays = 28+4*30+6*31;
+				break;
+			case 2:
+				numDays = 31+28;
+				break;			
+			}
+		numDays2 = getDaysOfMonth() - this.day;
+		int diasMes = getDaysOfMonth() - numDays2;
+		int diasDeAño = diasMes + numDays;
+		return diasDeAño;
+	}
 }
