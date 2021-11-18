@@ -76,7 +76,7 @@ public class Date {
 		else{return false;}
 	}
 	public boolean isSame(String date){
-		if(date==toString()){return true;}
+		if(date.equals(toString())){return true;}
 		else{return false;}
 	}
 	public String nameMonth (){
@@ -236,5 +236,52 @@ public class Date {
 		int diasMes = getDaysOfMonth() - numDays2;
 		int diasDeAño = diasMes + numDays;
 		return diasDeAño;
+	}
+	public int attemtsToFindDate(){
+		int intentos = 0;
+		String fechaRandom = "";
+		while(!fechaRandom.equals(toString())){
+			fechaRandom = ((int)(Math.random()*30)+1)+"/"+((int)(Math.random()*11)+1)+"/"+this.year;
+			intentos++;
+		}
+		return intentos;
+	}
+	public int attemtsToFindDate2(){
+		int intentos = 0;
+		String fechaRandom = "";
+		do{
+			fechaRandom = ((int)(Math.random()*30)+1)+"/"+((int)(Math.random()*11)+1)+"/"+this.year;
+			intentos++;
+		}while(!fechaRandom.equals(toString()));
+		return intentos;
+	}
+	public String diaDeLaSemana(){
+			int a = (int)((this.year-2000)/4)+this.year-2000;
+			int b = 0;
+			if(this.month==1){b=6;}
+			if(this.month==2){b=2;}
+			if(this.month==3){b=2;}
+			if(this.month==4){b=5;}
+			if(this.month==5){b=0;}
+			if(this.month==6){b=3;}
+			if(this.month==7){b=5;}
+			if(this.month==8){b=1;}
+			if(this.month==9){b=4;}
+			if(this.month==10){b=6;}
+			if(this.month==11){b=2;}
+			if(this.month==12){b=4;}
+			int c = this.day;
+			int dia =a+b+c;
+			while(dia>7){
+				dia=dia-7;
+			}
+			if(dia==1){return "Lunes";}
+			if(dia==2){return "Martes";}
+			if(dia==3){return "Miercoles";}
+			if(dia==4){return "Jueves";}
+			if(dia==5){return "Viernes";}
+			if(dia==6){return "Sabado";}
+			if(dia==0){return "Domingo";}
+			return "introduza una fecha correcta";
 	}
 }
